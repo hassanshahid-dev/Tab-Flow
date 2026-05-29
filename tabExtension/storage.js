@@ -35,6 +35,15 @@ const Storage = {
         );
         await this.saveWorkspaces(updated);
         return updated;
+    },
+
+    async activateWorkspace(id) {
+        const workspaces = await this.getWorkspaces();
+        const updated = workspaces.map(ws =>
+            ws._id === id ? { ...ws, isActive : true } : ws
+        );
+        await this.saveWorkspaces(updated);
+        return updated;
     }
 
 };

@@ -6,8 +6,15 @@
 // Right now you only need one thing from it: 
 // listen for Chrome startup so we know the extension is alive.
 
+// background.js
+
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("AI Tabs Manager installed");
+    console.log('AI Tabs Manager installed');
+});
+
+// Open sidebar when extension icon is clicked
+chrome.action.onClicked.addListener((tab) => {
+    chrome.sidePanel.open({ tabId: tab.id });
 });
 
 // Later (when you add backend sync), you'll add things like:

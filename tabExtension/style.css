@@ -1,86 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  width: 320px;
-  padding: 18px;
-  font-family: Arial, sans-serif;
-  background-color: #f4f7fb;
-  color: #1e293b;
-  margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    background: #0f0f0f;
+    color: #e8e8e8;
+    padding: 16px;
+    min-width: 300px;
 }
 
-h1 {
-  text-align: center;
-  color: #2563eb;
-  margin-bottom: 20px;
-  font-size: 22px;
+/* ========================
+   TOP BAR
+======================== */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #bfdbfe;
-  border-radius: 12px;
-  outline: none;
-  font-size: 14px;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  transition: 0.2s;
+.top-bar h1 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
 }
 
-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+#logoutBtn {
+    background: none;
+    border: 0.5px solid #333;
+    color: #666;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
 }
 
-button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 12px;
-  cursor: pointer;
-  border: none;
-  border-radius: 12px;
-  background-color: #2563eb;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  transition: 0.2s;
+#logoutBtn:hover {
+    border-color: #555;
+    color: #999;
 }
 
-button:hover {
-  background-color: #1d4ed8;
-  transform: translateY(-1px);
+
+/* ========================
+   INPUT + CREATE
+======================== */
+#workSpaceInput {
+    width: 100%;
+    padding: 9px 12px;
+    background: #161616;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 8px;
+    outline: none;
+    transition: border-color 0.15s;
 }
 
-button:active {
-  transform: scale(0.98);
+#workSpaceInput:focus {
+    border-color: #6366f1;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 18px;
+#createWorkSpace {
+    width: 100%;
+    padding: 9px;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.15s;
+}
+
+#createWorkSpace:hover {
+    background: #4f46e5;
+}
+
+
+/* ========================
+   SECTION HEADERS
+   Active / Closed labels
+======================== */
+.section-header {
+    font-size: 10px;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 16px 0 10px;
+}
+
+.section-header:first-child {
+    margin-top: 0;
+}
+
+
+/* ========================
+   WORKSPACE LIST
+======================== */
+#list {
+    list-style: none;
 }
 
 li {
-  background-color: white;
-  margin-top: 12px;
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px solid #dbeafe;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  font-size: 13px;
-  line-height: 1.6;
+    background: #161616;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 8px;
 }
 
-li button {
-  margin-top: 10px;
+
+/* ========================
+   WORKSPACE CARD HEADER
+======================== */
+.workspace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
+.workspace-header strong {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f0f0f0;
+}
+
+/* Closed workspace names are muted */
+li.closed .workspace-header strong {
+    color: #666;
+}
+
+.tab-count {
+    font-size: 11px;
+    color: #555;
+    background: #1f1f1f;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.ram-savings {
+    font-size: 11px;
+    color: #4ade80;
+    margin-bottom: 12px;
+}
+
+
+/* ========================
+   TAB PREVIEW LIST
+   No pills — just favicon + text
+======================== */
+.tab-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.tab-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tab-item img {
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.tab-item.muted {
+    color: #444;
+}
+
+
+/* ========================
+   BUTTONS
+======================== */
 .workspace-buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
 }
 
-.workspace-buttons button {
-  flex: 1;
+.btn-primary {
+    flex: 1;
+    padding: 7px;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 7px;
+    background: #1f1f1f;
+    color: #a1a1aa;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-secondary:hover {
+    background: #2a2a2a;
+}
+
+/* Delete — not full width, sits beside primary */
+.btn-danger {
+    padding: 7px 12px;
+    background: none;
+    color: #f87171;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-danger:hover {
+    background: #1f0a0a;
+}
+
+
+/* ========================
+   LOGIN PAGE
+======================== */
+#authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+#emailInput,
+#passwordInput {
+    padding: 9px 12px;
+    background: #161616;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+#emailInput:focus,
+#passwordInput:focus {
+    border-color: #6366f1;
+}
+
+#loginBtn,
+#registerBtn {
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#loginBtn {
+    background: #6366f1;
+    color: #fff;
+}
+
+#loginBtn:hover {
+    background: #4f46e5;
+}
+
+#registerBtn {
+    background: #1f1f1f;
+    color: #a1a1aa;
+    border: 0.5px solid #2a2a2a;
+}
+
+#registerBtn:hover {
+    background: #2a2a2a;
+}
+
+#authError {
+    font-size: 12px;
+    color: #f87171;
 }

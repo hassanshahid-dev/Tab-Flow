@@ -1,30 +1,28 @@
 {
-  "manifest_version": 3,
-  "name": "AI Tabs Manager",
-  "version": "1.0",
-  "description": "Save and restore browser workspaces.",
+    "manifest_version": 3,
+    "name": "AI Tabs Manager",
+    "version": "1.0",
+    "description": "Save and restore browser workspaces.",
 
-  "permissions": [
-    "tabs",
-    "storage"
-  ],
+    "permissions": [
+        "tabs",
+        "storage",
+        "sidePanel"
+    ],
 
-  "host_permissions": [
-    "http://localhost:5000/*"
-  ],
+    "host_permissions": [
+        "http://localhost:5000/*"
+    ],
 
-  "background": {
-    "service_worker": "background.js"
-  },
+    "background": {
+        "service_worker": "background.js"
+    },
 
-  "action": {
-    "default_popup": "popup.html"
-  },
+    "side_panel": {
+        "default_path": "popup.html"
+    },
 
-  "web_accessible_resources": [
-    {
-      "resources": ["login.html"],
-      "matches": ["<all_urls>"]
+    "action": {
+        "default_popup": ""
     }
-  ]
 }
